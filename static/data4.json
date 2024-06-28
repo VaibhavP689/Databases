@@ -1,6 +1,5 @@
 [
     {
-        "#": 1,
         "Date": "2024-01-01 00:00:00.000000",
         "Team": "Team A",
         "Resource Name": "John Doe",
@@ -12,7 +11,6 @@
         "Resolution Comments": "Investigating the root cause"
     },
     {
-        "#": 2,
         "Date": "2024-01-02 00:00:00.000000",
         "Team": "Team B",
         "Resource Name": "Jane Smith",
@@ -24,7 +22,6 @@
         "Resolution Comments": "Checking database configurations"
     },
     {
-        "#": 3,
         "Date": "2024-01-03 00:00:00.000000",
         "Team": "Team C",
         "Resource Name": "Bob Brown",
@@ -36,7 +33,6 @@
         "Resolution Comments": "Optimized the database queries"
     },
     {
-        "#": 4,
         "Date": "2024-01-04 00:00:00.000000",
         "Team": "Team D",
         "Resource Name": "Alice Johnson",
@@ -48,7 +44,6 @@
         "Resolution Comments": "Working with third-party vendor"
     },
     {
-        "#": 5,
         "Date": "2024-01-05 00:00:00.000000",
         "Team": "Team E",
         "Resource Name": "Alice White",

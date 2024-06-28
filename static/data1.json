@@ -1,6 +1,5 @@
 [
     {
-        "Key IDs": "ProjectName_01",
         "Director": "Benjamin",
         "ADM": "Oliver",
         "Team Name": "Team One",
@@ -22,7 +21,6 @@
         "Remarks": null
     },
     {
-        "Key IDs": "ProjectName_02",
         "Director": "Benjamin",
         "ADM": "Oliver",
         "Team Name": "Team two",
@@ -44,7 +42,6 @@
         "Remarks": null
     },
     {
-        "Key IDs": "ProjectName_03",
         "Director": "Serenity Panickar",
         "ADM": "Noah",
         "Team Name": "Team three",
@@ -66,7 +63,6 @@
         "Remarks": null
     },
     {
-        "Key IDs": "ProjectName_04",
         "Director": "Serenity Panickar",
         "ADM": "Noah",
         "Team Name": "Team 4",
@@ -88,7 +84,6 @@
         "Remarks": null
     },
     {
-        "Key IDs": "ProjectName_05",
         "Director": "James",
         "ADM": "William",
         "Team Name": "Team 5",

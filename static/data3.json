@@ -1,6 +1,5 @@
 [
     {
-        "Profile uploaded in Large Deal Coupa": "Yes",
         "Details sent to VAIRA": "Yes",
         "Tech M allocation": 0.5,
         "Coupa Request Sent to PMO": "Yes",
@@ -57,7 +56,6 @@
         "Project": "Project1"
     },
     {
-        "Profile uploaded in Large Deal Coupa": "No",
         "Details sent to VAIRA": "No",
         "Tech M allocation": 0.3,
         "Coupa Request Sent to PMO": "No",
@@ -114,7 +112,6 @@
         "Project": "Project2"
     },
     {
-        "Profile uploaded in Large Deal Coupa": "Yes",
         "Details sent to VAIRA": "Yes",
         "Tech M allocation": 0.7,
         "Coupa Request Sent to PMO": "Yes",
@@ -171,7 +168,6 @@
         "Project": "Project3"
     },
     {
-        "Profile uploaded in Large Deal Coupa": "No",
         "Details sent to VAIRA": "No",
         "Tech M allocation": 0.4,
         "Coupa Request Sent to PMO": "No",
@@ -228,7 +224,6 @@
         "Project": "Project4"
     },
     {
-        "Profile uploaded in Large Deal Coupa": "Yes",
         "Details sent to VAIRA": "Yes",
         "Tech M allocation": 0.6,
         "Coupa Request Sent to PMO": "Yes",
