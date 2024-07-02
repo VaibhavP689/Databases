@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize the grid
     const gridDiv = document.getElementById('myGrid');
-    new agGrid.Grid(gridDiv, gridOptions);
+    const gridApi = new agGrid.createGrid(gridDiv, gridOptions);
 
     // Fetch the JSON file
     fetch('static/data1.json')
@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 headerName: key,
                 field: key,
             }));
-            gridOptions.api.setColumnDefs(columns);
-            gridOptions.api.setRowData(data);
+            gridApi.setGridOption('columnDefs', columns);
+            gridApi.setGridOption('rowData', data);
         })
         .catch(error => console.error('Error loading JSON:', error));
-
+        
     // Add event listener for search box
     document.getElementById('myInput').addEventListener('input', function() {
-        gridOptions.api.setQuickFilter(this.value);
+        gridApi.setGridOption('quickFilterText', this.value);
     });
 });
