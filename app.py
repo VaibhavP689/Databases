@@ -1,10 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_cors import CORS
+import pandas as pd
+from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
+import json
+import os
 import sheet1
 import sheet2
 import sheet3
 import sheet4
 
 app = Flask(__name__)
+cors = CORS(app)
 
 @app.route('/')
 def screen1():
@@ -29,6 +36,24 @@ def screen4():
 def screen5():
     sheet4.method1()
     return render_template('sheet4.html')
+
+@app.route("/receiver", methods=["POST"])
+def postME():
+    data = request.get_json()
+    print(data)
+    json_file_path = os.path.join('static', 'data1.json')
+    with open(json_file_path, 'w') as outfile:
+        dict_train = json.dump(data, outfile, indent=4)
+
+    # engine = create_engine('sqlite:///mydb1.db')
+    # conn: Engine.connect = engine.connect()
+
+    # train = pd.DataFrame.from_dict(dict_train, orient='index')
+    # train.to_sql("Sheet1Table", con=engine, if_exists='replace', index=False)
+
+    # conn.close()
+    # engine.dispose()
+    return data
 
 if __name__ == '__main__':
     app.run(debug=True, port = 8000)

@@ -11,12 +11,13 @@ def method1():
 
     # Check if the database file exists and remove it if it does
     if os.path.exists('mydb1.db'):
-        try:
-            os.remove('mydb1.db')
-            print("Previous database file removed successfully.")
-        except PermissionError:
-            print("The file is in use. Please close any programs that might be using the database file and try again.")
-            return
+        return
+        # try:
+        #     os.remove('mydb1.db')
+        #     print("Previous database file removed successfully.")
+        # except PermissionError:
+        #     print("The file is in use. Please close any programs that might be using the database file and try again.")
+        #     return
 
     # Create a new database connection and engine
     engine = create_engine('sqlite:///mydb1.db')
@@ -42,6 +43,10 @@ def method1():
 
     # Convert rows to a list of dictionaries
     data = [dict(zip(column_names, row)) for row in rows]
+    # for dict in data:
+    #     for value in dict.values():
+    #         if value.type() == "date":
+    #             print(value)
 
     # Close the cursor and connection
     cursor.close()
