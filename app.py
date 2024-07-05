@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 from sqlalchemy import create_engine
@@ -12,6 +12,15 @@ import sheet4
 
 app = Flask(__name__)
 cors = CORS(app)
+
+def load_data():
+    with open('static/data1.json', 'r') as f:
+        return json.load(f)
+
+# Save data to JSON file
+def save_data(data):
+    with open('static/data1.json', 'w') as f:
+        json.dump(data, f, indent=4)
 
 @app.route('/')
 def screen1():
@@ -54,6 +63,14 @@ def postME():
     # conn.close()
     # engine.dispose()
     return data
+
+@app.route('/delete', methods=['POST'])
+def delete_row():
+    row_id = request.json.get('id')
+    data = load_data()
+    data = [row for row in data if row['id'] != row_id]
+    save_data(data)
+    return jsonify(success=True)
 
 if __name__ == '__main__':
     app.run(debug=True, port = 8000)

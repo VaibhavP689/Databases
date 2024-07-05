@@ -42,6 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi);
+        setTimeout(() => {
+            this.location.reload();
+            console.log('Timeout completed!');
+          }, 200);
     });
 });
 
@@ -67,17 +71,5 @@ function exportGridDataToJson(gridApi) {
                 }
             }).catch((err) => console.error(err));
             
-           
-
-    // const blob = new Blob([json], { type: "application/json" });
-
-    // const url = URL.createObjectURL(blob);
-    // const a = document.createElement('a');
-    // a.href = url;
-    // a.download = 'gridData.json';
-    
-    // a.click();
-
-    // URL.revokeObjectURL(url);
 
     }
