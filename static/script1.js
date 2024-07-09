@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
             sortable: true,
             filter: true,
             editable: true,
-        }
+        },
+        rowSelection: "multiple"
     };
 
     // Initialize the grid
@@ -40,12 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add event listener to the button
+    document.getElementById('deleteRowBtn').addEventListener('click', () => {
+        onRemoveSelected(gridApi);
+    });
+
+    // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi);
-        setTimeout(() => {
-            this.location.reload();
-            console.log('Timeout completed!');
-          }, 200);
+        // setTimeout(() => {
+        //     this.location.reload();
+        //     console.log('Timeout completed!');
+        //   }, 200);
     });
 });
 
@@ -55,7 +61,7 @@ function exportGridDataToJson(gridApi) {
 
     const json = JSON.stringify(rowData, null, 2);
 
-    fetch("/receiver", 
+    fetch("/receiver1", 
         {
             method: 'POST',
             headers: {
@@ -70,6 +76,10 @@ function exportGridDataToJson(gridApi) {
                     alert("something is wrong")
                 }
             }).catch((err) => console.error(err));
-            
+}
 
-    }
+function onRemoveSelected(gridApi) {
+    const selectedData = gridApi.getSelectedRows();
+    const res = gridApi.applyTransaction({ remove: selectedData });
+    printResult(res);
+}

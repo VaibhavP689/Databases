@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from flask_cors import CORS
 import pandas as pd
 from sqlalchemy import create_engine
@@ -12,15 +12,6 @@ import sheet4
 
 app = Flask(__name__)
 cors = CORS(app)
-
-def load_data():
-    with open('static/data1.json', 'r') as f:
-        return json.load(f)
-
-# Save data to JSON file
-def save_data(data):
-    with open('static/data1.json', 'w') as f:
-        json.dump(data, f, indent=4)
 
 @app.route('/')
 def screen1():
@@ -46,11 +37,21 @@ def screen5():
     sheet4.method1()
     return render_template('sheet4.html')
 
-@app.route("/receiver", methods=["POST"])
-def postME():
+@app.route("/receiver1", methods=["POST"])
+def postME1():
+    data = request.get_json()
+    final = json.dumps(data, indent=2)
+    # json_file_path = os.path.join('static', 'data1.json')
+    # with open(json_file_path, 'w') as outfile:
+    #     dict_train = json.dump(data, outfile, indent=4)
+    sheet1.createDatabaseTableFromJSON(final)
+    return final
+
+@app.route("/receiver2", methods=["POST"])
+def postME2():
     data = request.get_json()
     print(data)
-    json_file_path = os.path.join('static', 'data1.json')
+    json_file_path = os.path.join('static', 'data2.json')
     with open(json_file_path, 'w') as outfile:
         dict_train = json.dump(data, outfile, indent=4)
 
@@ -64,13 +65,41 @@ def postME():
     # engine.dispose()
     return data
 
-@app.route('/delete', methods=['POST'])
-def delete_row():
-    row_id = request.json.get('id')
-    data = load_data()
-    data = [row for row in data if row['id'] != row_id]
-    save_data(data)
-    return jsonify(success=True)
+@app.route("/receiver3", methods=["POST"])
+def postME3():
+    data = request.get_json()
+    print(data)
+    json_file_path = os.path.join('static', 'data3.json')
+    with open(json_file_path, 'w') as outfile:
+        dict_train = json.dump(data, outfile, indent=4)
+
+    # engine = create_engine('sqlite:///mydb1.db')
+    # conn: Engine.connect = engine.connect()
+
+    # train = pd.DataFrame.from_dict(dict_train, orient='index')
+    # train.to_sql("Sheet1Table", con=engine, if_exists='replace', index=False)
+
+    # conn.close()
+    # engine.dispose()
+    return data
+
+@app.route("/receiver4", methods=["POST"])
+def postME4():
+    data = request.get_json()
+    print(data)
+    json_file_path = os.path.join('static', 'data4.json')
+    with open(json_file_path, 'w') as outfile:
+        dict_train = json.dump(data, outfile, indent=4)
+
+    # engine = create_engine('sqlite:///mydb1.db')
+    # conn: Engine.connect = engine.connect()
+
+    # train = pd.DataFrame.from_dict(dict_train, orient='index')
+    # train.to_sql("Sheet1Table", con=engine, if_exists='replace', index=False)
+
+    # conn.close()
+    # engine.dispose()
+    return data
 
 if __name__ == '__main__':
     app.run(debug=True, port = 8000)

@@ -1,5 +1,6 @@
 body {
     font-family: Helvetica, sans-serif;
+    background-image: url("tech-mahindra.webp");
     background-color: #231f20;
     color: #e31837;
   }
@@ -9,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #231f20;
+    background-color: #000000;
   }
   
   li {

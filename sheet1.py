@@ -18,25 +18,12 @@ class FileChangeHandler(FileSystemEventHandler):
             self.method_to_run()
 
 def method1():
-    createDatabase("mydb1.db")
-    createTable("Project_1.xlsx", "Sheet1", "mydb1.db")
+    if os.path.exists("mydb1.db") == False:
+        createDatabase("mydb1.db")
+        createTable("Project_1.xlsx", "Sheet1", "mydb1.db")
+
     createJSONFileFromDB("Sheet1", "data1.json", "mydb1.db")
 
-    # Define the path to the 'data1.json' file in the 'static' directory
-    json_file_path = os.path.join('static', 'data1.json')
-
-    # Read the data from the JSON file
-    with open(json_file_path, 'r') as json_file:
-        data = json.load(json_file)
-
-    # Convert the data to a DataFrame
-    df = pd.DataFrame(data)
-
-    # Write the DataFrame to the Excel file
-    with pd.ExcelWriter("Project_1.xlsx", engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
-        df.to_excel(writer, sheet_name="Sheet1", index=False)
-
-    print("Excel file has been updated from the JSON file.")
 
 
 if __name__ == "__main__":
@@ -81,8 +68,8 @@ def createTable(srcFileName, sheetName, dbName):
     df = pd.read_excel(srcFileName, sheet_name=sheetName, index_col=0)
 
     # Write records stored in a DataFrame to a SQL database
-    df.to_sql(tblName, conn, if_exists='replace', index=False)
- 
+    df.to_sql(tblName, conn, if_exists='replace')
+    print("Table Created")
     # Explicitly close the SQLAlchemy engine
     conn.commit()
     conn.close()
@@ -119,3 +106,43 @@ def createJSONFileFromDB(sheetName, outputFileName, dbName):
         json.dump(data, json_file, indent=4)
 
     print(f"Data has been saved to {json_file_path}")
+
+def createDatabaseTableFromJSON(json_string):
+    
+    # Parse JSON string
+    data_dict = json.loads(json_string)
+
+    # converting json dataset from dictionary to dataframe
+    df = pd.DataFrame.from_dict(data_dict)
+
+    # Connect to SQLite database (or create it)
+    conn = sqlite3.connect('mydb1.db')
+    # conn.execute("DROP TABLE Sheet1Table") 
+
+    df.to_sql("Sheet1Table", conn, if_exists='replace', index=False)
+
+    # Commit changes and close connection
+    conn.commit()
+    conn.close()
+
+    # Write the DataFrame to the Excel file
+    with pd.ExcelWriter("Project_1.xlsx", engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
+        df.to_excel(writer, sheet_name="Sheet1", index=False)
+        print("New Excel Created")
+
+def updateExcel():
+    # Define the path to the 'data1.json' file in the 'static' directory
+    json_file_path = os.path.join('static', 'data1.json')
+
+    # Read the data from the JSON file
+    with open(json_file_path, 'r') as json_file:
+        data_dict = json.load(json_file)
+
+    # Convert the data to a DataFrame
+    df = pd.DataFrame(data_dict)
+
+    # Write the DataFrame to the Excel file
+    with pd.ExcelWriter("Project_1.xlsx", engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
+        df.to_excel(writer, sheet_name="Sheet1", index=False)
+
+    print("Excel file has been updated from the JSON file.")
