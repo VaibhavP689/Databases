@@ -1,0 +1,57 @@
+[
+    {
+        "Date": "2024-01-01 00:00:00.000000",
+        "Team": "Team A",
+        "Resource Name": "John Doe",
+        "Issue Description": "Issue with application login",
+        "Owner": "Jane Smith",
+        "TechM - SPOC": "Mike Johnson",
+        "Priority": "High",
+        "Status": "Open",
+        "Resolution Comments": "Investigating the root cause"
+    },
+    {
+        "Date": "2024-01-02 00:00:00.000000",
+        "Team": "Team B",
+        "Resource Name": "Jane Smith",
+        "Issue Description": "Database connectivity issue",
+        "Owner": "Bob Brown",
+        "TechM - SPOC": "Alice White",
+        "Priority": "Medium",
+        "Status": "In Progress",
+        "Resolution Comments": "Checking database configurations"
+    },
+    {
+        "Date": "2024-01-03 00:00:00.000000",
+        "Team": "Team C",
+        "Resource Name": "Bob Brown",
+        "Issue Description": "Slow application performance",
+        "Owner": "Alice Johnson",
+        "TechM - SPOC": "John Doe",
+        "Priority": "Low",
+        "Status": "Resolved",
+        "Resolution Comments": "Optimized the database queries"
+    },
+    {
+        "Date": "2024-01-04 00:00:00.000000",
+        "Team": "Team D",
+        "Resource Name": "Alice Johnson",
+        "Issue Description": "API integration failure",
+        "Owner": "John Doe",
+        "TechM - SPOC": "Jane Smith",
+        "Priority": "High",
+        "Status": "Open",
+        "Resolution Comments": "Working with third-party vendor"
+    },
+    {
+        "Date": "2024-01-05 00:00:00.000000",
+        "Team": "Team E",
+        "Resource Name": "Alice White",
+        "Issue Description": "User interface bug in dashboard",
+        "Owner": "Mike Johnson",
+        "TechM - SPOC": "Bob Brown",
+        "Priority": "Medium",
+        "Status": "In Progress",
+        "Resolution Comments": "Redesigning the UI component"
+    }
+]

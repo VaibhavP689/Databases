@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="60" />
+    <title>Home Screen and Widgets</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleG.css') }}">
+</head>
+<body>
+    <h1>Home Screen</h1>
+    <ul>
+        <li class="highlight"><a href="/">Home Screen and Widgets</a></li>
+        <li><a href="/upsclientinfo">UPS Client Info</a></li>
+        <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
+        <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
+        <li><a href="/issues">Issues</a></li>
+    </ul>
+    <div id="chart-container" class="chart-style">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="{{ url_for('static', filename='script0.js') }}"></script>
+</body>
+</html>
