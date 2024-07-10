@@ -36,7 +36,7 @@ body {
   }
 
   .button {
-    background-color: #04AA6D; /* Green */
+    background-color: #e31837;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -44,4 +44,8 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+  }
+
+  a:focus {
+    outline: 2px solid blue; 
   }

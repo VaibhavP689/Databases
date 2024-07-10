@@ -48,18 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi);
-        // setTimeout(() => {
-        //     this.location.reload();
-        //     console.log('Timeout completed!');
-        //   }, 200);
+        setTimeout(() => {
+            this.location.reload();
+            console.log('Timeout completed!');
+          }, 200);
     });
 });
 
 function exportGridDataToJson(gridApi) {
     const rowData = [];
     gridApi.forEachNode(node => rowData.push(node.data));
-
-    const json = JSON.stringify(rowData, null, 2);
+    const filteredRowData = rowData.filter(obj => !isAllValuesNull(obj));
+    const json = JSON.stringify(filteredRowData, null, 2);
 
     fetch("/receiver1", 
         {
@@ -78,8 +78,21 @@ function exportGridDataToJson(gridApi) {
             }).catch((err) => console.error(err));
 }
 
+
 function onRemoveSelected(gridApi) {
     const selectedData = gridApi.getSelectedRows();
-    const res = gridApi.applyTransaction({ remove: selectedData });
-    printResult(res);
+    const emptyRows = selectedData.filter(row => Object.values(row).every(value => value === null || value === ""));
+
+    if (emptyRows.length > 0) {
+        gridApi.applyTransaction({ remove: emptyRows });
+    } else {
+        if(confirm("Some of your selected rows have data in them. Are you sure you want to delete the selected rows?")) {
+            console.log("Do it!");
+            gridApi.applyTransaction({ remove: selectedData });
+        }
+    }
+}
+
+function isAllValuesNull(obj) {
+    return Object.values(obj).every(value => value === null);
 }

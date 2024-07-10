@@ -1,14 +1,8 @@
 from flask import Flask, render_template, request
 from flask_cors import CORS
-import pandas as pd
-from sqlalchemy import create_engine
-from sqlalchemy.engine import Engine
 import json
 import os
-import sheet1
-import sheet2
-import sheet3
-import sheet4
+import utility
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -19,87 +13,73 @@ def screen1():
 
 @app.route('/upsclientinfo')
 def screen2():
-    sheet1.method1()
+    routeAction(1)
     return render_template('sheet1.html')
 
 @app.route('/techmahindrainfo')
 def screen3():
-    sheet2.method1()
+    routeAction(2)
     return render_template('sheet2.html')
 
 @app.route('/techmahindraemployeedetails')
 def screen4():
-    sheet3.method1()
+    routeAction(3)
     return render_template('sheet3.html')
 
 @app.route('/issues')
 def screen5():
-    sheet4.method1()
+    routeAction(4)
     return render_template('sheet4.html')
 
 @app.route("/receiver1", methods=["POST"])
 def postME1():
     data = request.get_json()
     final = json.dumps(data, indent=2)
-    # json_file_path = os.path.join('static', 'data1.json')
-    # with open(json_file_path, 'w') as outfile:
-    #     dict_train = json.dump(data, outfile, indent=4)
-    sheet1.createDatabaseTableFromJSON(final)
+    utility.createDatabaseTableFromJSON(final, "mydb1.db", 'Sheet1')
     return final
 
 @app.route("/receiver2", methods=["POST"])
 def postME2():
     data = request.get_json()
-    print(data)
-    json_file_path = os.path.join('static', 'data2.json')
-    with open(json_file_path, 'w') as outfile:
-        dict_train = json.dump(data, outfile, indent=4)
-
-    # engine = create_engine('sqlite:///mydb1.db')
-    # conn: Engine.connect = engine.connect()
-
-    # train = pd.DataFrame.from_dict(dict_train, orient='index')
-    # train.to_sql("Sheet1Table", con=engine, if_exists='replace', index=False)
-
-    # conn.close()
-    # engine.dispose()
-    return data
+    final = json.dumps(data, indent=2)
+    utility.createDatabaseTableFromJSON(final, "mydb2.db", 'Sheet2')
+    return final
 
 @app.route("/receiver3", methods=["POST"])
 def postME3():
     data = request.get_json()
-    print(data)
-    json_file_path = os.path.join('static', 'data3.json')
-    with open(json_file_path, 'w') as outfile:
-        dict_train = json.dump(data, outfile, indent=4)
-
-    # engine = create_engine('sqlite:///mydb1.db')
-    # conn: Engine.connect = engine.connect()
-
-    # train = pd.DataFrame.from_dict(dict_train, orient='index')
-    # train.to_sql("Sheet1Table", con=engine, if_exists='replace', index=False)
-
-    # conn.close()
-    # engine.dispose()
-    return data
+    final = json.dumps(data, indent=2)
+    utility.createDatabaseTableFromJSON(final, "mydb3.db", "Sheet3")
+    return final
 
 @app.route("/receiver4", methods=["POST"])
 def postME4():
     data = request.get_json()
-    print(data)
-    json_file_path = os.path.join('static', 'data4.json')
-    with open(json_file_path, 'w') as outfile:
-        dict_train = json.dump(data, outfile, indent=4)
+    final = json.dumps(data, indent=2)
+    utility.createDatabaseTableFromJSON(final, "mydb4.db", "Sheet4")
+    return final
 
-    # engine = create_engine('sqlite:///mydb1.db')
-    # conn: Engine.connect = engine.connect()
-
-    # train = pd.DataFrame.from_dict(dict_train, orient='index')
-    # train.to_sql("Sheet1Table", con=engine, if_exists='replace', index=False)
-
-    # conn.close()
-    # engine.dispose()
-    return data
+def routeAction(selectedTab):
+    if (selectedTab == 1):   
+        if os.path.exists("mydb1.db") == False:
+            utility.createDatabase("mydb1.db")
+            utility.createTable("Project_1.xlsx", "Sheet1", "mydb1.db")
+        utility.createJSONFileFromDB("Sheet1", "data1.json", "mydb1.db")
+    elif (selectedTab == 2):   
+        if os.path.exists("mydb2.db") == False:
+            utility.createDatabase("mydb2.db")
+            utility.createTable("Project_1.xlsx", "Sheet2", "mydb2.db")
+        utility.createJSONFileFromDB("Sheet2", "data2.json", "mydb2.db")
+    elif(selectedTab == 3):
+        if os.path.exists("mydb3.db") == False:
+            utility.createDatabase("mydb3.db")
+            utility.createTable("Project_1.xlsx", "Sheet3", "mydb3.db")
+        utility.createJSONFileFromDB("Sheet3", "data3.json", "mydb3.db")
+    elif(selectedTab == 4):
+        if os.path.exists("mydb4.db") == False:
+            utility.createDatabase("mydb4.db")
+            utility.createTable("Project_1.xlsx", "Sheet4", "mydb4.db")
+        utility.createJSONFileFromDB("Sheet4", "data4.json", "mydb4.db")
 
 if __name__ == '__main__':
     app.run(debug=True, port = 8000)
