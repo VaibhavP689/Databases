@@ -14,8 +14,6 @@ def screen1():
     return render_template('index.html')
 
 
-
-
 @app.route('/chart-data')
 def chart_data():
     try:
