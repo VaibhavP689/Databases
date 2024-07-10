@@ -49,3 +49,7 @@ body {
   a:focus {
     outline: 2px solid blue; 
   }
+
+  .highlight {
+    background-color: #4d4d4f; /* Change this to whatever color you prefer */
+  }
