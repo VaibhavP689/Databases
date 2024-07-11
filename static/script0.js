@@ -1,73 +1,77 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    let chart;
-    
-    // Function to render or update the chart based on type
-    const renderChart = (type, data) => {
-        const labels = data.map(item => item['Key IDs']);
-        const values = data.map(item => item['Total']);
-        const offshoreValues = data.map(item => item['Offshore']);
+    let charts = {};
+    let chartData;
 
-        const chartData = {
-            labels: labels,
-            datasets: [{
-                label: 'Total',
-                data: values,
-                backgroundColor: '#e31837',
-                borderColor: '#e31837',
-                borderWidth: 1,
-                yAxisID: 'y-axis-1',
-            }, {
-                label: 'Offshore',
-                data: offshoreValues,
-                backgroundColor: '#3e95cd',
-                borderColor: '#3e95cd',
-                borderWidth: 1,
-                yAxisID: 'y-axis-1',
-            }]
-        };
+    const variableColors = {
+        'Total': '#e31837',
+        'Offshore': '#3e95cd',
+        'Onsite': '#00e673',
+        'CW ID': '#ffa500',
+        'ADID': '#800080',
+        'RSA': '#00ced1',
+        'CitrixLaptop': '#ff69b4'
+    };
 
-        const chartOptions = {
-            scales: {
-                yAxes: [{
-                    id: 'y-axis-1',
-                    type: 'linear',
-                    position: 'left',
-                    ticks: {
-                        beginAtZero: true,
-                    }
-                }]
+    // Function to render or update the chart based on type and selected variables
+    const renderChart = (type, selectedVariables, containerId) => {
+        const labels = chartData.map(item => item['Key IDs']);
+        const datasets = selectedVariables.map(variable => ({
+            label: variable,
+            data: chartData.map(item => item[variable]),
+            backgroundColor: variableColors[variable],
+            borderColor: variableColors[variable],
+            borderWidth: 1,
+        }));
+
+        const chartConfig = {
+            type: type,
+            data: { labels: labels, datasets: datasets },
+            options: {
+                scales: {
+                    yAxes: [{
+                        id: 'y-axis-1',
+                        type: 'linear',
+                        position: 'left',
+                        ticks: { beginAtZero: true }
+                    }]
+                },
+                maintainAspectRatio: false // Ensure the chart fits its container
             }
         };
 
-        const chartContainer = document.getElementById('chart-container');
+        const chartContainer = document.getElementById(containerId);
         const canvas = document.createElement('canvas');
-        canvas.id = 'myChart';
+        canvas.id = `chart-${containerId}`;
         chartContainer.innerHTML = ''; // Clear previous content
         chartContainer.appendChild(canvas);
 
         const ctx = canvas.getContext('2d');
 
-        if (chart) {
-            chart.destroy(); // Destroy the existing chart before creating a new one
+        if (charts[containerId]) {
+            charts[containerId].destroy(); // Destroy the existing chart before creating a new one
         }
 
-        chart = new Chart(ctx, {
-            type: type,
-            data: chartData,
-            options: chartOptions
-        });
+        charts[containerId] = new Chart(ctx, chartConfig);
     };
 
     // Fetch data from data1.json
     fetch('/static/data1.json')
         .then(response => response.json())
         .then(data => {
-            renderChart('line', data); // Initial render with line chart and fetched data
+            chartData = data;
 
-            // Handle chart type change
-            document.getElementById('chartType').addEventListener('change', (event) => {
-                const selectedType = event.target.value;
-                renderChart(selectedType, data); // Update chart with selected type and fetched data
+            document.getElementById('addWidget').addEventListener('click', () => {
+                const chartId = `chart-container-${Object.keys(charts).length}`;
+
+                const chartContainer = document.createElement('div');
+                chartContainer.classList.add('chart-style');
+                chartContainer.id = chartId;
+                document.getElementById('dashboard').appendChild(chartContainer);
+
+                const dropdownContent = document.getElementById('dropdown-content');
+                const selectedVariables = Array.from(dropdownContent.querySelectorAll('input[name="dataVariable"]:checked')).map(input => input.value);
+                const chartType = document.getElementById('chartType').value;
+                renderChart(chartType, selectedVariables, chartId);
             });
         })
         .catch(error => {

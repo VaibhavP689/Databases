@@ -1,8 +1,6 @@
 /* Chart-specific styles */
 .chart-style {
-    position: absolute;
-    top: 200px; /* Adjust this value to move the chart vertically */
-    right: 1200px; /* Adjust this value to move the chart horizontally */
+    position: relative;
     background-color: white;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -12,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 20px; /* Add margin for spacing between charts */
 }
 
 .chart-style canvas {

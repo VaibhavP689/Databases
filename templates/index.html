@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="60" />
     <title>Home Screen and Widgets</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -17,10 +16,30 @@
         <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
         <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
         <li><a href="/issues">Issues</a></li>
+        <li><a href="/+">+</a></li>
     </ul>
-    <div id="chart-container" class="chart-style">
-        <canvas id="myChart"></canvas>
+    <div id="controls">
+        <select id="chartType">
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+        </select>
+        <div id="variableSelection">
+            <div class="dropdown">
+                <button class="dropbtn">Select Variables</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <label><input type="checkbox" name="dataVariable" value="Total"> Total</label>
+                    <label><input type="checkbox" name="dataVariable" value="Offshore"> Offshore</label>
+                    <label><input type="checkbox" name="dataVariable" value="Onsite"> Onsite</label>
+                    <label><input type="checkbox" name="dataVariable" value="CW ID"> CW ID</label>
+                    <label><input type="checkbox" name="dataVariable" value="ADID"> ADID</label>
+                    <label><input type="checkbox" name="dataVariable" value="RSA"> RSA</label>
+                    <label><input type="checkbox" name="dataVariable" value="CitrixLaptop"> CitrixLaptop</label>
+                </div>
+            </div>
+        </div>
+        <button id="addWidget" class="route-button">+</button>
     </div>
+    <div id="dashboard"></div>
     <script src="{{ url_for('static', filename='script0.js') }}"></script>
 </body>
 </html>
