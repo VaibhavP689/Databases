@@ -1,8 +1,8 @@
 /* Chart-specific styles */
-.chart-style {
+.chart-style1 {
     position: absolute;
-    top: 200px; /* Adjust this value to move the chart vertically */
-    right: 1200px; /* Adjust this value to move the chart horizontally */
+    top: 250px; /* Adjust this value to move the chart vertically */
+    left: 00px; /* Adjust this value to move the chart horizontally */
     background-color: white;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -14,7 +14,27 @@
     justify-content: center;
 }
 
-.chart-style canvas {
+.chart-style1 canvas {
+    width: 100%; /* Make canvas width 100% of the container */
+    height: 100%; /* Make canvas height 100% of the container */
+}
+
+.chart-style2 {
+    position: absolute;
+    top: 250px; /* Adjust this value to move the chart vertically */
+    left: 350px; /* Adjust this value to move the chart horizontally */
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 320px; /* Set a fixed width for the container */
+    height: 180px; /* Set a fixed height for the container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-style2 canvas {
     width: 100%; /* Make canvas width 100% of the container */
     height: 100%; /* Make canvas height 100% of the container */
 }

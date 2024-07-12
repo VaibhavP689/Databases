@@ -1,8 +1,27 @@
 body {
     font-family: Helvetica, sans-serif;
-    background-image: url("tech-mahindra.webp");
-    background-color: #231f20;
+    background-color: #000000;
     color: #e31837;
+  }
+
+    .header-container {
+      display: flex;
+      align-items: center; /* Align items vertically centered */
+      justify-content: space-between; /* Space between the image and title */
+      padding: 20px; /* Add padding for spacing */
+      background-color: #000000; /* Ensure the background matches the rest of the layout */
+      position: relative; /* For positioning the header title */
+  }
+
+  .header-title {
+      margin: 0; /* Remove default margin */
+      flex: 1; /* Allow the header title to grow */
+      text-align: center; /* Center the text */
+  }
+
+  .flex-space {
+      width: 210px; /* Reserve space equal to the image's width */
+      height: 75px; /* Reserve space equal to the image's height */
   }
 
   ul {
@@ -33,6 +52,8 @@ body {
   h1 {
     text-align: center;
     font-size: 48px;
+    padding: 0px;
+    margin: 0px;
   }
 
   .button {
@@ -46,10 +67,25 @@ body {
     font-size: 16px;
   }
 
-  a:focus {
-    outline: 2px solid blue; 
-  }
-
   .highlight {
     background-color: #4d4d4f; /* Change this to whatever color you prefer */
+  }
+
+  #left {  
+    width: 210px;  
+    height: 75px;
+    padding: 0px 0px;
+    object-fit: none;  
+    object-position: left top;  
+  }
+
+  /* Define size and style for the anchor element */
+  .my-link {
+    display: inline-block;  /* Makes the anchor behave like a block element */
+    width: 210px;           /* Sets the width of the anchor */
+    height: 75px;           /* Sets the height of the anchor */
+    line-height: 50px;      /* Vertically centers the text within the anchor */
+    text-align: center;     /* Horizontally centers the text within the anchor */
+    color: white;           /* Text color */
+    text-decoration: none;  /* Removes underline from the text */
   }

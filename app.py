@@ -88,8 +88,8 @@ def routeAction(selectedTab):
     if os.path.exists("mydb.db") == False:
         utility.createDatabase("mydb.db")
     conn = sqlite3.connect('mydb.db')
-
     cursor = conn.cursor()
+    
     if (selectedTab == 1):   
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Sheet1Table'")
         result = cursor.fetchone()
@@ -109,7 +109,6 @@ def routeAction(selectedTab):
             utility.createTable("Project_1.xlsx", "Sheet3", "mydb.db")
         utility.createJSONFileFromDB("Sheet3", "data3.json", "mydb.db")
     elif(selectedTab == 4):
-
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Sheet4Table'")
         result = cursor.fetchone()
         if result is None:
@@ -117,5 +116,4 @@ def routeAction(selectedTab):
         utility.createJSONFileFromDB("Sheet4", "data4.json", "mydb.db")
 
 if __name__ == '__main__':
-
     app.run(debug=True, port = 8000)

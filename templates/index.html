@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="60" />
     <title>Home Screen and Widgets</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styleG.css') }}">
 </head>
 <body>
-    <h1>Home Screen</h1>
+    <div class="header-container">
+        <a href="https://www.techmahindra.com/" class="my-link">
+            <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
+        </a>
+        <div class="header-content">
+            <h1>Home Screen</h1>
+        </div>
+        <div class="flex-space"></div>
+    </div>
     <ul>
         <li class="highlight"><a href="/">Home Screen and Widgets</a></li>
         <li><a href="/upsclientinfo">UPS Client Info</a></li>
@@ -18,8 +25,11 @@
         <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
         <li><a href="/issues">Issues</a></li>
     </ul>
-    <div id="chart-container" class="chart-style">
-        <canvas id="myChart"></canvas>
+    <div id="chart-container1" class="chart-style1">
+        <canvas id="myChart1"></canvas>
+    </div>
+    <div id="chart-container2" class="chart-style2">
+        <canvas id="myChart2"></canvas>
     </div>
     <script src="{{ url_for('static', filename='script0.js') }}"></script>
 </body>
