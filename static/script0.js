@@ -60,6 +60,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(data => {
             chartData = data;
             document.getElementById('addWidget').addEventListener('click', () => {
+                const dropdownContent = document.getElementById('dropdown-content');
+                const selectedVariables = Array.from(dropdownContent.querySelectorAll('input[name="dataVariable"]:checked')).map(input => input.value);
+
+                if (selectedVariables.length === 0) {
+                    console.warn('Please select at least one variable');
+                    alert('Please select at least one variable'); // Alert the user to select variables
+                    return; // Exit the function if no variables are selected
+                }
+
                 const dashboard = document.getElementById('dashboard');
                 const chartId = `chart-container-${Object.keys(charts).length}`;
 
@@ -76,8 +85,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 chartContainer.id = chartId;
                 row.appendChild(chartContainer);
 
-                const dropdownContent = document.getElementById('dropdown-content');
-                const selectedVariables = Array.from(dropdownContent.querySelectorAll('input[name="dataVariable"]:checked')).map(input => input.value);
                 const chartType = document.getElementById('chartType').value;
                 renderChart(chartType, selectedVariables, chartId);
             });

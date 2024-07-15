@@ -82,6 +82,7 @@ body {
     text-decoration: none;  /* Removes underline from the text */
   }
   
+
   #controls {
     display: flex;
     align-items: center;
@@ -89,11 +90,11 @@ body {
     gap: 10px;
     margin-top: 20px;
   }
-  
+    
   .control-item {
     display: inline-block;
   }
-  
+    
   .control-button {
     background-color: #e31837;
     color: white;
@@ -103,17 +104,22 @@ body {
     cursor: pointer;
     border-radius: 4px;
   }
-  
+    
   .dropbtn {
     background-color: #e31837;
     color: white;
-    padding: 16px;
+    padding: 10px 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     border-radius: 4px;
   }
   
+  .chevron {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+    
   .dropdown {
     position: relative;
     display: inline-block;
@@ -153,11 +159,11 @@ body {
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
-  }
+  }  
   
   .chart-style {
-    width: 350px; /* Set a fixed width */
-    height: 250px; /* Set a fixed height */
+    width: 300px; /* Set a fixed width */
+    height: 300px; /* Set a fixed height */
     background-color: white;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
