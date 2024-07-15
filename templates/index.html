@@ -25,12 +25,30 @@
         <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
         <li><a href="/issues">Issues</a></li>
     </ul>
-    <div id="chart-container1" class="chart-style1">
-        <canvas id="myChart1"></canvas>
+    <div id="controls">
+        <div class="control-item">
+            <select id="chartType" class="control-button">
+                <option value="bar">Bar</option>
+                <option value="line">Line</option>
+            </select>
+        </div>
+        <div class="control-item dropdown">
+            <button class="control-button dropbtn">Select Variables</button>
+            <div class="dropdown-content" id="dropdown-content">
+                <label><input type="checkbox" name="dataVariable" value="Total"> Total</label>
+                <label><input type="checkbox" name="dataVariable" value="Offshore"> Offshore</label>
+                <label><input type="checkbox" name="dataVariable" value="Onsite"> Onsite</label>
+                <label><input type="checkbox" name="dataVariable" value="CW ID"> CW ID</label>
+                <label><input type="checkbox" name="dataVariable" value="ADID"> ADID</label>
+                <label><input type="checkbox" name="dataVariable" value="RSA"> RSA</label>
+                <label><input type="checkbox" name="dataVariable" value="CitrixLaptop"> CitrixLaptop</label>
+            </div>
+        </div>
+        <div class="control-item">
+            <button id="addWidget" class="control-button">+</button>
+        </div>
     </div>
-    <div id="chart-container2" class="chart-style2">
-        <canvas id="myChart2"></canvas>
-    </div>
+    <div id="dashboard"></div>
     <script src="{{ url_for('static', filename='script0.js') }}"></script>
 </body>
 </html>
