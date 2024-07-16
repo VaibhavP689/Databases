@@ -10,9 +10,7 @@ cors = CORS(app)
 
 @app.route('/')
 def screen1():
-
     return render_template('index.html')
-
 
 @app.route('/chart-data')
 def chart_data():
@@ -33,6 +31,27 @@ def chart_data():
         return jsonify({
             'error': 'Failed to load data'
         })
+
+@app.route('/save-charts', methods=['POST'])
+def save_charts():
+    try:
+        data = request.get_json()
+        with open('static/data0.json', 'w') as f:
+            json.dump(data, f, indent=2)
+        return jsonify({'message': 'Charts saved successfully'})
+    except Exception as e:
+        print(f"Error saving charts data to JSON file: {str(e)}")
+        return jsonify({'error': 'Failed to save data'}), 500
+    
+@app.route('/load-charts')
+def load_charts():
+    try:
+        with open('static/data0.json', 'r') as f:
+            data = json.load(f)
+        return jsonify(data)
+    except Exception as e:
+        print(f"Error loading charts data from JSON file: {str(e)}")
+        return jsonify({'error': 'Failed to load data'}), 500
 
 @app.route('/upsclientinfo')
 def screen2():
@@ -86,8 +105,8 @@ def routeAction(selectedTab):
     if os.path.exists("mydb.db") == False:
         utility.createDatabase("mydb.db")
     conn = sqlite3.connect('mydb.db')
-
     cursor = conn.cursor()
+
     if (selectedTab == 1):   
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Sheet1Table'")
         result = cursor.fetchone()
@@ -107,7 +126,6 @@ def routeAction(selectedTab):
             utility.createTable("Project_1.xlsx", "Sheet3", "mydb.db")
         utility.createJSONFileFromDB("Sheet3", "data3.json", "mydb.db")
     elif(selectedTab == 4):
-
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Sheet4Table'")
         result = cursor.fetchone()
         if result is None:
@@ -115,5 +133,4 @@ def routeAction(selectedTab):
         utility.createJSONFileFromDB("Sheet4", "data4.json", "mydb.db")
 
 if __name__ == '__main__':
-
     app.run(debug=True, port = 8000)

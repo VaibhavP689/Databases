@@ -9,36 +9,58 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styleG.css') }}">
 </head>
 <body>
-    <h1>Home Screen</h1>
+    <div class="header-container">
+        <a href="https://www.techmahindra.com/" class="my-link">
+            <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
+        </a>
+        <div class="header-content">
+            <h1>Home Screen</h1>
+        </div>
+        <div class="flex-space"></div>
+    </div>
     <ul>
         <li class="highlight"><a href="/">Home Screen and Widgets</a></li>
         <li><a href="/upsclientinfo">UPS Client Info</a></li>
         <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
         <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
         <li><a href="/issues">Issues</a></li>
-        <li><a href="/+">+</a></li>
     </ul>
     <div id="controls">
-        <select id="chartType">
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
-        </select>
-        <div id="variableSelection">
-            <div class="dropdown">
-                <button class="dropbtn">Select Variables</button>
-                <div class="dropdown-content" id="dropdown-content">
-                    <label><input type="checkbox" name="dataVariable" value="Total"> Total</label>
-                    <label><input type="checkbox" name="dataVariable" value="Offshore"> Offshore</label>
-                    <label><input type="checkbox" name="dataVariable" value="Onsite"> Onsite</label>
-                    <label><input type="checkbox" name="dataVariable" value="CW ID"> CW ID</label>
-                    <label><input type="checkbox" name="dataVariable" value="ADID"> ADID</label>
-                    <label><input type="checkbox" name="dataVariable" value="RSA"> RSA</label>
-                    <label><input type="checkbox" name="dataVariable" value="CitrixLaptop"> CitrixLaptop</label>
-                </div>
+        <div class="control-item">
+            <button id="deleteButton" class="control-button">Delete</button>
+        </div>
+        <div class="control-item">
+            <select id="chartType" class="control-button">
+                <option value="bar">Bar</option>
+                <option value="line">Line</option>
+            </select>
+        </div>
+        <div class="control-item dropdown">
+            <button class="control-button dropbtn">
+                Select Variables 
+                <span class="chevron">&#x25BC;</span> 
+            </button>
+            <div class="dropdown-content" id="dropdown-content">
+                <label><input type="checkbox" name="dataVariable" value="Total"> Total</label>
+                <label><input type="checkbox" name="dataVariable" value="Offshore"> Offshore</label>
+                <label><input type="checkbox" name="dataVariable" value="Onsite"> Onsite</label>
+                <label><input type="checkbox" name="dataVariable" value="CW ID"> CW ID</label>
+                <label><input type="checkbox" name="dataVariable" value="ADID"> ADID</label>
+                <label><input type="checkbox" name="dataVariable" value="RSA"> RSA</label>
+                <label><input type="checkbox" name="dataVariable" value="CitrixLaptop"> CitrixLaptop</label>
             </div>
         </div>
-        <button id="addWidget" class="route-button">+</button>
+        <div class="control-item">
+            <button id="addWidget" class="control-button">+</button>
+        </div>
+        <div class="control-item">
+            <button id="exportButton" class="control-button">Save</button>
+        </div>
+        <div class="control-item">
+            <button id="loadButton" class="control-button">Load</button>
+        </div>
     </div>
+    <br>
     <div id="dashboard"></div>
     <script src="{{ url_for('static', filename='script0.js') }}"></script>
 </body>

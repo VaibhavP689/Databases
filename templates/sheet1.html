@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>UPS Client Info</h1>
+    <div class="header-container">
+        <a href="https://www.techmahindra.com/" class="my-link">
+            <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
+        </a>
+        <div class="header-content">
+            <h1>UPS Client Info</h1>
+        </div>
+        <div class="flex-space"></div>
+    </div>
     <ul>
         <li><a href="/">Home Screen and Widgets</a></li>
         <li class="highlight"><a href="/upsclientinfo">UPS Client Info</a></li>

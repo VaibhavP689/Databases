@@ -76,6 +76,8 @@ function exportGridDataToJson(gridApi) {
                     alert("something is wrong")
                 }
             }).catch((err) => console.error(err));
+
+    alert("Tech Mahindra Info Data Saved");
 }
 
 

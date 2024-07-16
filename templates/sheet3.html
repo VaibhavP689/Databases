@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPS Client Info</title>
+    <title>Tech Mahindra Employee Details</title>
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>UPS Client Info</h1>
+    <div class="header-container">
+        <a href="https://www.techmahindra.com/" class="my-link">
+            <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
+        </a>
+        <div class="header-content">
+            <h1>Tech Mahindra Employee Details</h1>
+        </div>
+        <div class="flex-space"></div>
+    </div>
     <ul>
         <li><a href="/">Home Screen and Widgets</a></li>
         <li><a href="/upsclientinfo">UPS Client Info</a></li>

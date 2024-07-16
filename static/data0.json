@@ -1,0 +1,11 @@
+[
+  {
+    "type": "bar",
+    "selectedVariables": [
+      "Total",
+      "Offshore",
+      "Onsite"
+    ],
+    "containerId": "chart-container-0"
+  }
+]
