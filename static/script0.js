@@ -28,15 +28,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
             type: type,
             data: { labels: labels, datasets: datasets },
             options: {
-                scales: {
-                    yAxes: [{
-                        id: 'y-axis-1',
-                        type: 'linear',
-                        position: 'left',
-                        ticks: { beginAtZero: true }
-                    }]
-                },
-                maintainAspectRatio: true 
+                //scales: {
+                    //yAxes: [{
+                        //id: 'y-axis-1',
+                        //type: 'linear',
+                        //position: 'left',
+                        //ticks: { beginAtZero: true }
+                    //}]
+                //},
+                maintainAspectRatio: false
             }
         };
 
