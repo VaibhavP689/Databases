@@ -4,7 +4,7 @@ body {
     color: #e31837;
   }
 
-    .header-container {
+  .header-container {
       display: flex;
       align-items: center; /* Align items vertically centered */
       justify-content: space-between; /* Space between the image and title */
@@ -47,6 +47,11 @@ body {
   
   li a:hover {
     background-color: #4d4d4f;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: center; /* Center the ul horizontally */
   }
 
   h1 {

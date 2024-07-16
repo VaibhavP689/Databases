@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the grid
     const gridDiv = document.getElementById('myGrid');
     const gridApi = new agGrid.createGrid(gridDiv, gridOptions);
+    let oldLength = 0;
 
     // Fetch the JSON file
     fetch('static/data1.json')
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
             gridApi.setGridOption('columnDefs', columns);
             gridApi.setGridOption('editType', 'fullRow');
             gridApi.setGridOption('rowData', data);
+            oldLength = data.length;
         })
         .catch(error => console.error('Error loading JSON:', error));
         
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
-        exportGridDataToJson(gridApi);
+        exportGridDataToJson(gridApi, oldLength);
         setTimeout(() => {
             this.location.reload();
             console.log('Timeout completed!');
@@ -55,10 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function exportGridDataToJson(gridApi) {
+function exportGridDataToJson(gridApi, oldLength) {
     const rowData = [];
     gridApi.forEachNode(node => rowData.push(node.data));
     const filteredRowData = rowData.filter(obj => !isAllValuesNull(obj));
+    const newLength = filteredRowData.length;
+    let diff = newLength - oldLength;
     const json = JSON.stringify(filteredRowData, null, 2);
 
     fetch("/receiver1", 
@@ -77,7 +81,22 @@ function exportGridDataToJson(gridApi) {
                 }
             }).catch((err) => console.error(err));
 
-    alert("UPS Client Info Data Saved");
+    if(diff === 1) {
+        alert("UPS Client Info Data Saved With A Net 1 Row Added");
+    }
+    else if(diff > 0) {
+        alert("UPS Client Info Data Saved With A Net " + diff + " Rows Added");
+    }
+    else if(diff === 0){
+        alert('UPS Client Info Data Saved With A Net 0 Rows Added Or Removed');
+    }
+    else if(diff === -1) {
+        alert("UPS Client Info Data Saved With A Net 1 Row Removed");
+    }
+    else {
+        diff = diff * -1;
+        alert("UPS Client Info Data Saved With A Net " + diff + " Rows Removed");
+    }
 }
 
 
@@ -89,7 +108,6 @@ function onRemoveSelected(gridApi) {
         gridApi.applyTransaction({ remove: emptyRows });
     } else {
         if(confirm("Some of your selected rows have data in them. Are you sure you want to delete the selected rows?")) {
-            console.log("Do it!");
             gridApi.applyTransaction({ remove: selectedData });
         }
     }

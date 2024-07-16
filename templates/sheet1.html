@@ -10,25 +10,31 @@
 </head>
 <body>
     <div class="header-container">
-        <a href="https://www.techmahindra.com/" class="my-link">
-            <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
-        </a>
+        <div class="flex-space"></div>
         <div class="header-content">
-            <h1>UPS Client Info</h1>
+            <a href="https://www.techmahindra.com/" class="my-link">
+                <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
+            </a>
         </div>
         <div class="flex-space"></div>
     </div>
-    <ul>
-        <li><a href="/">Home Screen and Widgets</a></li>
-        <li class="highlight"><a href="/upsclientinfo">UPS Client Info</a></li>
-        <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
-        <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
-        <li><a href="/issues">Issues</a></li>
-    </ul>
-    <input type="text" id="myInput" placeholder="Search for names..">
-    <button id="addRowBtn" class="button">Add Row</button>
-    <button id="deleteRowBtn" class="button">Delete Row</button>
-    <button id="exportButton" class="button">Save</button>
+    <div class="center-container">
+        <ul>
+            <li><a href="/">Dashboard</a></li>
+            <li class="highlight"><a href="/upsclientinfo">UPS Client Info</a></li>
+            <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
+            <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
+            <li><a href="/issues">Issues</a></li>
+        </ul>
+    </div>
+    <br>
+    <div class="center-container">
+        <input type="text" id="myInput" placeholder="Search for names..">
+        <button id="addRowBtn" class="button">Add Row</button>
+        <button id="deleteRowBtn" class="button">Delete Row</button>
+        <button id="exportButton" class="button">Save</button>
+    </div>
+    <br>
     <div id="myGrid" class="ag-theme-alpine" style="height: 400px;"></div>
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
     <script src="static/script1.js"></script>
