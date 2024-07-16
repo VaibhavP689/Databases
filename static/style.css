@@ -119,14 +119,14 @@ h1 {
 }
 
 .search-bar {
-  height: 40px; /* Adjust the height to make it less tall */
-  width: 300px; /* Adjust the width to make it wider */
-  padding: 5px 10px; /* Add some padding for better appearance */
-  font-size: 16px; /* Ensure the font size is consistent */
-  border: 1px solid #ccc; /* Add a border for better visibility */
-  border-radius: 4px; /* Add some rounding to the corners */
-  box-sizing: border-box; /* Ensure padding and border are included in the total width and height */
-  margin-bottom: 0; /* Remove any bottom margin */
+  height: 40px;
+  width: 300px; 
+  padding: 5px 10px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  margin-bottom: 0;
 }
 
 .button-spacing {
