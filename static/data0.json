@@ -1,0 +1,44 @@
+{
+  "charts": [
+    {
+      "type": "bar",
+      "selectedVariables": [
+        "Total",
+        "Offshore",
+        "Onsite"
+      ],
+      "containerId": "chart-container-0"
+    },
+    {
+      "type": "bar",
+      "selectedVariables": [
+        "CW ID",
+        "ADID",
+        "RSA"
+      ],
+      "containerId": "chart-container-1"
+    },
+    {
+      "type": "line",
+      "selectedVariables": [
+        "Total",
+        "Offshore",
+        "Onsite"
+      ],
+      "containerId": "chart-container-2"
+    },
+    {
+      "type": "line",
+      "selectedVariables": [
+        "Total",
+        "Offshore",
+        "Onsite",
+        "CW ID",
+        "ADID",
+        "RSA",
+        "CitrixLaptop"
+      ],
+      "containerId": "chart-container-3"
+    }
+  ]
+}
