@@ -10,21 +10,23 @@
 </head>
 <body>
     <div class="header-container">
-        <a href="https://www.techmahindra.com/" class="my-link">
-            <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
-        </a>
+        <div class="flex-space"></div>
         <div class="header-content">
-            <h1>Home Screen</h1>
+            <a href="https://www.techmahindra.com/" class="my-link">
+                <img id="left" src="{{ url_for('static', filename='Untitled.png') }}" />
+            </a>
         </div>
         <div class="flex-space"></div>
     </div>
-    <ul>
-        <li class="highlight"><a href="/">Home Screen and Widgets</a></li>
-        <li><a href="/upsclientinfo">UPS Client Info</a></li>
-        <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
-        <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
-        <li><a href="/issues">Issues</a></li>
-    </ul>
+    <div class="center-container">
+        <ul>
+            <li class="highlight"><a href="/">Dashboard</a></li>
+            <li><a href="/upsclientinfo">UPS Client Info</a></li>
+            <li><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
+            <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
+            <li><a href="/issues">Issues</a></li>
+        </ul>
+    </div>
     <div id="controls">
         <div class="control-item">
             <button id="deleteButton" class="control-button">Delete</button>
