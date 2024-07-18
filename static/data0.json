@@ -1,10 +1,11 @@
 [
   {
-    "type": "bar",
+    "type": "line",
     "selectedVariables": [
-      "Total",
-      "Offshore",
-      "Onsite"
+      "CW ID",
+      "ADID",
+      "RSA",
+      "CitrixLaptop"
     ],
     "containerId": "chart-container-0"
   }
