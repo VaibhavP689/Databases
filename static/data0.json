@@ -6,35 +6,6 @@
       "Offshore",
       "Onsite"
     ],
-    "containerId": "chart-container-1"
-  },
-  {
-    "type": "line",
-    "selectedVariables": [
-      "Total",
-      "Offshore",
-      "Onsite"
-    ],
-    "containerId": "chart-container-3"
-  },
-  {
-    "type": "line",
-    "selectedVariables": [
-      "CW ID",
-      "ADID",
-      "RSA",
-      "CitrixLaptop"
-    ],
-    "containerId": "chart-container-5"
-  },
-  {
-    "type": "bar",
-    "selectedVariables": [
-      "CW ID",
-      "ADID",
-      "RSA",
-      "CitrixLaptop"
-    ],
-    "containerId": "chart-container-7"
+    "containerId": "chart-container-0"
   }
 ]
