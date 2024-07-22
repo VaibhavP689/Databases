@@ -1,26 +1,56 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let charts = {};
-    let chartData;
+    let chartData = {};
     let deleteMode = false;
     let originalChartConfigs = {};
 
     const variableColors = {
-        'Total': '#e31837',
-        'Offshore': '#3e95cd',
-        'Onsite': '#00e673',
-        'CW ID': '#ffa500',
-        'ADID': '#800080',
-        'RSA': '#00ced1',
-        'CitrixLaptop': '#ff69b4'
+        'UPS Client Info': {
+            'Total': '#e31837',
+            'Offshore': '#3e95cd',
+            'Onsite': '#00e673',
+            'CW ID': '#ffa500',
+            'ADID': '#800080',
+            'RSA': '#00ced1',
+            'CitrixLaptop': '#ff69b4'
+        },
+        'Tech Mahindra Info': {
+            'First Name': '#1f77b4',
+            'Last Name': '#ff7f0e',
+            'External': '#2ca02c',
+            'Exp': '#d62728',
+            'Status': '#9467bd',
+            'Skill': '#8c564b',
+        },
+        'Tech Mahindra Details': {
+            'Tech M allocation': '#7f7f7f',
+            'Emp ID': '#bcbd22',
+            'App Name': '#17becf',
+            'Skills': '#1f77b4',
+            'CW ID': '#ff7f0e',
+            'AD ID': '#2ca02c'
+        },
+        'Issues': {
+            'Team': '#d62728',
+            'Priority': '#9467bd',
+            'Status': '#8c564b',
+        }
     };
 
-    const renderChart = (type, selectedVariables, containerId) => {
-        const labels = chartData.map(item => item['Key IDs']);
+    const xAxisLabels = {
+        'UPS Client Info': 'Key IDs',
+        'Tech Mahindra Info': 'Last Name',
+        'Tech Mahindra Details': 'Emp ID',
+        'Issues': 'Resource Name'
+    };
+
+    const renderChart = (type, selectedVariables, containerId, sheet) => {
+        const labels = chartData[sheet].map(item => item[xAxisLabels[sheet]]);
         const datasets = selectedVariables.map(variable => ({
             label: variable,
-            data: chartData.map(item => item[variable]),
-            backgroundColor: variableColors[variable],
-            borderColor: variableColors[variable],
+            data: chartData[sheet].map(item => item[variable]),
+            backgroundColor: variableColors[sheet][variable],
+            borderColor: variableColors[sheet][variable],
             borderWidth: 1,
         }));
 
@@ -31,8 +61,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 plugins: {
                     title: {
                         display: true,
-                        text: containerId
-                    }, 
+                        text: sheet
+                    },
                     padding: 4,
                 },
                 maintainAspectRatio: false
@@ -61,7 +91,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 const chart = charts[containerId];
                 acc[containerId] = {
                     type: chart.config.type,
-                    selectedVariables: chart.config.data.datasets.map(dataset => dataset.label)
+                    selectedVariables: chart.config.data.datasets.map(dataset => dataset.label),
+                    sheet: chart.config.options.plugins.title.text
                 };
                 return acc;
             }, {});
@@ -82,7 +113,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             } else {
                 const config = originalChartConfigs[containerId];
                 if (config) {
-                    renderChart(config.type, config.selectedVariables, containerId);
+                    renderChart(config.type, config.selectedVariables, containerId, config.sheet);
                 }
             }
         }
@@ -96,7 +127,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return {
                 type: chart.config.type,
                 selectedVariables: chart.config.data.datasets.map(dataset => dataset.label),
-                containerId: containerId
+                containerId: containerId,
+                sheet: chart.config.options.plugins.title.text 
             };
         });
 
@@ -127,12 +159,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         fetch('/load-charts')
             .then(response => response.json())
             .then(chartConfigs => {
-                chartConfigs.forEach(config => {
-                    const { type, selectedVariables, containerId } = config;
+                const promises = chartConfigs.map(config => {
+                    const { type, selectedVariables, containerId, sheet } = config;
                     const dashboard = document.getElementById('dashboard');
                     let chartContainer = document.getElementById(containerId);
+
                     if (!chartContainer) {
-                        // Create a new row if needed
                         let row = dashboard.lastElementChild;
                         if (!row || row.childElementCount >= 4) {
                             row = document.createElement('div');
@@ -146,7 +178,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         row.appendChild(chartContainer);
                     }
 
-                    renderChart(type, selectedVariables, containerId);
+                    return fetchData(sheet).then(() => {
+                        renderChart(type, selectedVariables, containerId, sheet);
+                    });
+                });
+
+                Promise.all(promises).catch(error => {
+                    console.error('Error loading charts:', error);
+                    alert('Error loading charts.');
                 });
             })
             .catch(error => {
@@ -157,42 +196,75 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     document.getElementById('loadButton').addEventListener('click', loadCharts);
 
-    // Fetch data from data1.json
-    fetch('/static/data1.json')
-        .then(response => response.json())
-        .then(data => {
-            chartData = data;
-            document.getElementById('addWidget').addEventListener('click', () => {
-                const dropdownContent = document.getElementById('dropdown-content');
-                const selectedVariables = Array.from(dropdownContent.querySelectorAll('input[name="dataVariable"]:checked')).map(input => input.value);
+    const fetchData = (sheet) => {
+        const sheetMap = {
+            'UPS Client Info': 'data1.json',
+            'Tech Mahindra Info': 'data2.json',
+            'Tech Mahindra Details': 'data3.json',
+            'Issues': 'data4.json'
+        };
 
-                if (selectedVariables.length === 0) {
-                    console.warn('Please select at least one variable');
-                    alert('Please select at least one variable'); 
-                    return; 
-                }
-
-                const dashboard = document.getElementById('dashboard');
-                const chartId = `chart-container-${Object.keys(charts).length}`;
-
-                // Create a new row if needed
-                let row = dashboard.lastElementChild;
-                if (!row || row.childElementCount >= 4) {
-                    row = document.createElement('div');
-                    row.classList.add('chart-row');
-                    dashboard.appendChild(row);
-                }
-
-                const chartContainer = document.createElement('div');
-                chartContainer.classList.add('chart-style');
-                chartContainer.id = chartId;
-                row.appendChild(chartContainer);
-
-                const chartType = document.getElementById('chartType').value;
-                renderChart(chartType, selectedVariables, chartId);
+        return fetch(`/static/${sheetMap[sheet]}`)
+            .then(response => response.json())
+            .then(data => {
+                chartData[sheet] = data;
+                updateVariableSelect(sheet);
+            })
+            .catch(error => {
+                console.error(`Error fetching data for ${sheet}:`, error);
+                return Promise.reject(error); 
             });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
+    };
+
+    const updateVariableSelect = (sheet) => {
+        const variableSelect = document.getElementById('dropdown-content');
+        variableSelect.innerHTML = '';
+
+        const variables = Object.keys(variableColors[sheet] || {});
+        variables.forEach(variable => {
+            const label = document.createElement('label');
+            label.innerHTML = `<input type="checkbox" name="dataVariable" value="${variable}"> ${variable}`;
+            variableSelect.appendChild(label);
         });
+    };
+
+    document.getElementById('sheetSelect').addEventListener('change', (event) => {
+        const selectedSheet = event.target.value;
+        fetchData(selectedSheet);
+    });
+
+    document.getElementById('addWidget').addEventListener('click', () => {
+        const dropdownContent = document.getElementById('dropdown-content');
+        const selectedVariables = Array.from(dropdownContent.querySelectorAll('input[name="dataVariable"]:checked')).map(input => input.value);
+
+        if (selectedVariables.length === 0) {
+            console.warn('Please select at least one variable');
+            alert('Please select at least one variable');
+            return;
+        }
+
+        const dashboard = document.getElementById('dashboard');
+        const chartId = `chart-container-${Object.keys(charts).length}`;
+        const sheet = document.getElementById('sheetSelect').value;
+
+        // Create a new row if needed
+        let row = dashboard.lastElementChild;
+        if (!row || row.childElementCount >= 4) {
+            row = document.createElement('div');
+            row.classList.add('chart-row');
+            dashboard.appendChild(row);
+        }
+
+        const chartContainer = document.createElement('div');
+        chartContainer.classList.add('chart-style');
+        chartContainer.id = chartId;
+        row.appendChild(chartContainer);
+
+        const chartType = document.getElementById('chartType').value;
+        fetchData(sheet).then(() => {
+            renderChart(chartType, selectedVariables, chartId, sheet);
+        });
+    });
+
+    fetchData('UPS Client Info');
 });

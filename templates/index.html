@@ -29,12 +29,18 @@
     </div>
     <div id="controls">
         <div class="control-item">
-            <button id="deleteButton" class="control-button">Delete</button>
-        </div>
-        <div class="control-item">
             <select id="chartType" class="control-button">
                 <option value="bar">Bar</option>
                 <option value="line">Line</option>
+            </select>
+        </div>
+        <div class="control-item">
+            <select id="sheetSelect" class="control-button">
+                <option value="" disabled selected>Select Sheet</option>
+                <option value="UPS Client Info">UPS Client Info</option>
+                <option value="Tech Mahindra Info">Tech Mahindra Info</option>
+                <option value="Tech Mahindra Details">Tech Mahindra Details</option>
+                <option value="Issues">Issues</option>
             </select>
         </div>
         <div class="control-item dropdown">
@@ -43,13 +49,6 @@
                 <span class="chevron">&#x25BC;</span> 
             </button>
             <div class="dropdown-content" id="dropdown-content">
-                <label><input type="checkbox" name="dataVariable" value="Total"> Total</label>
-                <label><input type="checkbox" name="dataVariable" value="Offshore"> Offshore</label>
-                <label><input type="checkbox" name="dataVariable" value="Onsite"> Onsite</label>
-                <label><input type="checkbox" name="dataVariable" value="CW ID"> CW ID</label>
-                <label><input type="checkbox" name="dataVariable" value="ADID"> ADID</label>
-                <label><input type="checkbox" name="dataVariable" value="RSA"> RSA</label>
-                <label><input type="checkbox" name="dataVariable" value="CitrixLaptop"> CitrixLaptop</label>
             </div>
         </div>
         <div class="control-item">
@@ -60,6 +59,9 @@
         </div>
         <div class="control-item">
             <button id="loadButton" class="control-button">Load</button>
+        </div>
+        <div class="control-item">
+            <button id="deleteButton" class="control-button">Delete</button>
         </div>
     </div>
     <br>

@@ -10,6 +10,7 @@ cors = CORS(app)
 
 @app.route('/')
 def screen1():
+    utility.createSheetMetaData("Project_1.xlsx")
     return render_template('index.html')
 
 # @app.route('/chart-data')

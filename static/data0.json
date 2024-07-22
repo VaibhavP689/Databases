@@ -1,12 +1,1 @@
-[
-  {
-    "type": "line",
-    "selectedVariables": [
-      "CW ID",
-      "ADID",
-      "RSA",
-      "CitrixLaptop"
-    ],
-    "containerId": "chart-container-0"
-  }
-]
+[]
