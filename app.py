@@ -12,25 +12,25 @@ cors = CORS(app)
 def screen1():
     return render_template('index.html')
 
-@app.route('/chart-data')
-def chart_data():
-    try:
-        with open('static/data1.json', 'r') as f:
-            data = json.load(f)
-            # Extracting required data for the chart (first and fifth variables)
-            labels = [item['Key IDs'] for item in data]
-            values = [item['Total'] for item in data]
-            offshoreValues = [item['Offshore'] for item in data]
-            return jsonify({
-                'labels': labels,
-                'values': values,
-                'offshoreValues': offshoreValues
-            })
-    except Exception as e:
-        print(f"Error loading data from JSON file: {str(e)}")
-        return jsonify({
-            'error': 'Failed to load data'
-        })
+# @app.route('/chart-data')
+# def chart_data():
+#     try:
+#         with open('static/data1.json', 'r') as f:
+#             data = json.load(f)
+#             # Extracting required data for the chart (first and fifth variables)
+#             labels = [item['Key IDs'] for item in data]
+#             values = [item['Total'] for item in data]
+#             offshoreValues = [item['Offshore'] for item in data]
+#             return jsonify({
+#                 'labels': labels,
+#                 'values': values,
+#                 'offshoreValues': offshoreValues
+#             })
+#     except Exception as e:
+#         print(f"Error loading data from JSON file: {str(e)}")
+#         return jsonify({
+#             'error': 'Failed to load data'
+#         })
 
 @app.route('/save-charts', methods=['POST'])
 def save_charts():
