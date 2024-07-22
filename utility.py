@@ -19,7 +19,18 @@ def createDatabase(dbName):
     conn.close()
     engine.dispose()
 
-
+def createSheetMetaData(srcFileName):
+    meta = {}
+    with pd.ExcelFile(srcFileName) as xls:
+        sheetNames = xls.sheet_names
+        for name in sheetNames:
+            df = pd.read_excel(srcFileName, sheet_name=name)
+            column_names = list(df.columns)
+            meta[name] = column_names
+    print(meta)
+    json_file_path = os.path.join('static', 'meta.json')
+    with open(json_file_path, "w") as outfile: 
+        json.dump(meta, outfile, indent=4)
 
 def createTable(srcFileName, sheetName, dbName):
     

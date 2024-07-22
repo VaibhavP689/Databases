@@ -47,6 +47,16 @@ document.addEventListener('DOMContentLoaded', function() {
         onRemoveSelected(gridApi);
     });
 
+    // Add event listener for add row button
+    document.getElementById('addColumnBtn').addEventListener('click', function() {
+        addColumn(gridApi);
+    });
+
+    // Add event listener to the button
+    document.getElementById('deleteColumnBtn').addEventListener('click', () => {
+        deleteColumn(gridApi);
+    });
+
     // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi, oldLength);
@@ -99,7 +109,6 @@ function exportGridDataToJson(gridApi, oldLength) {
     }
 }
 
-
 function onRemoveSelected(gridApi) {
     const selectedData = gridApi.getSelectedRows();
     const emptyRows = selectedData.filter(row => Object.values(row).every(value => value === null || value === ""));
@@ -116,3 +125,99 @@ function onRemoveSelected(gridApi) {
 function isAllValuesNull(obj) {
     return Object.values(obj).every(value => value === null);
 }
+
+function addColumn(gridApi) {
+    const columnName = prompt("What is the new column name?");
+    let isItInt = prompt("Is this string or number data? String for string, Number for number.");
+
+    const rowData = [];
+    gridApi.forEachNode(node => rowData.push(node.data));
+    const filteredRowData = rowData.filter(obj => !isAllValuesNull(obj));
+    console.log(filteredRowData);
+    if (isItInt === "String" || isItInt === "string") {
+        for (let dict of filteredRowData) {
+            // Add the new column with an empty string value
+            dict[columnName] = null;
+        }
+    }
+    else if (isItInt === "Number" || isItInt === "number") {
+        for (let dict of filteredRowData) {
+            // Add the new column with a value of 0
+            dict[columnName] = 0;
+        }
+    }
+    else {
+        alert("Invalid Data Type. Please use either String or Number.");
+    }
+    console.log(filteredRowData);
+
+    alert("New Column Saved. Screen will now refresh.");
+
+    setTimeout(() => {
+        this.location.reload();
+        console.log('Timeout completed!');
+      }, 200);
+    const json = JSON.stringify(filteredRowData, null, 2);
+    console.log(json);
+
+    fetch("/receiver1", 
+        {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        body:json})
+        .then(function(response){
+                if(response.ok){
+                    console.log("hello")
+                }else{
+                    alert("something is wrong")
+                }
+            }).catch((err) => console.error(err));
+}
+
+function deleteColumn(gridApi) {
+    const columnName = prompt("What column do you want to delete?");
+
+    const rowData = [];
+    gridApi.forEachNode(node => rowData.push(node.data));
+    const filteredRowData = rowData.filter(obj => !isAllValuesNull(obj));
+    for (let dict of filteredRowData) {
+        if(!checkIfKeyExist(dict, columnName)) {
+            alert("Entered column name doesn't exist. Please try again.");
+            return;
+        }
+        delete(dict[columnName]);
+    }
+
+    alert("Column Deleted. Screen will now refresh.");
+
+    setTimeout(() => {
+        this.location.reload();
+        console.log('Timeout completed!');
+      }, 200);
+    const json = JSON.stringify(filteredRowData, null, 2);
+    console.log(json);
+
+    fetch("/receiver1", 
+        {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
+            },
+        body:json})
+        .then(function(response){
+                if(response.ok){
+                    console.log("hello")
+                }else{
+                    alert("something is wrong")
+                }
+            }).catch((err) => console.error(err));
+}
+
+const checkIfKeyExist = (objectName, keyName) => {
+    let keyExist = Object.keys(objectName).some(key => key === keyName);
+    return keyExist;
+};
