@@ -59,6 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
+        const params = {
+            fileName: 'EmployeeDetails.csv'
+        };
+        gridApi.exportDataAsCsv(params);
+    });
+
+    // Add event listener to the button
+    document.getElementById('saveButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi, oldLength);
         setTimeout(() => {
             this.location.reload();

@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "type": "line",
+    "selectedVariables": [
+      "Exp"
+    ],
+    "containerId": "chart-container-2",
+    "sheet": "Tech Mahindra Info"
+  },
+  {
+    "type": "line",
+    "selectedVariables": [
+      "Total",
+      "Offshore",
+      "Onsite"
+    ],
+    "containerId": "chart-container-1",
+    "sheet": "UPS Client Info"
+  }
+]

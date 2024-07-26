@@ -15,20 +15,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             'CitrixLaptop': '#ff69b4'
         },
         'Tech Mahindra Info': {
-            'First Name': '#1f77b4',
-            'Last Name': '#ff7f0e',
-            'External': '#2ca02c',
-            'Exp': '#d62728',
-            'Status': '#9467bd',
-            'Skill': '#8c564b',
+            'Exp': '#d62728'
         },
         'Tech Mahindra Details': {
-            'Tech M allocation': '#7f7f7f',
-            'Emp ID': '#bcbd22',
-            'App Name': '#17becf',
-            'Skills': '#1f77b4',
-            'CW ID': '#ff7f0e',
-            'AD ID': '#2ca02c'
+            'Emp ID': '#bcbd22'
         },
         'Issues': {
             'Team': '#d62728',
