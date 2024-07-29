@@ -16,15 +16,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const gridApi = new agGrid.createGrid(gridDiv, gridOptions);
     let oldLength = 0;
 
+    // Date formatter function
+    function dateFormatter(params) {
+        if (params.value) {
+            return moment(params.value).format('MM/DD/YYYY');
+        } else {
+            return '';
+        }
+    }
+
     // Fetch the JSON file
     fetch('static/data3.json')
         .then(response => response.json())
         .then(data => {
             // Set column definitions from the keys of the first object
-            const columns = Object.keys(data[0]).map(key => ({
-                headerName: key,
-                field: key,
-            }));
+            const columns = Object.keys(data[0]).map(key => {
+                const isString = typeof data[0][key] === 'string';
+                if(isString) {
+                    const isDate = data[0][key].includes("00:00:00");
+                    return {
+                        headerName: key,
+                        field: key,
+                        valueFormatter: isDate ? dateFormatter : undefined
+                    };
+                }
+                else {
+                    return {
+                        headerName: key,
+                        field: key
+                    };
+                }
+            });
             gridApi.setGridOption('columnDefs', columns);
             gridApi.setGridOption('editType', 'fullRow');
             gridApi.setGridOption('rowData', data);
