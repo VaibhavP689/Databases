@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Mahindra Information</title>
+    <title>Supplier Information</title>
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
     <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -21,9 +21,9 @@
     <div class="center-container">
         <ul>
             <li><a href="/">Dashboard</a></li>
-            <li><a href="/upsclientinfo">UPS Client Info</a></li>
-            <li class="highlight"><a href="/techmahindrainfo">Tech Mahindra Info</a></li>
-            <li><a href="/techmahindraemployeedetails">Tech Mahindra Employee Details</a></li>
+            <li><a href="/upsclientinfo">Client Information</a></li>
+            <li class="highlight"><a href="/techmahindrainfo">Supplier Information</a></li>
+            <li><a href="/techmahindraemployeedetails">Supplier Employee Details</a></li>
             <li><a href="/issues">Issues</a></li>
         </ul>
     </div>
@@ -34,12 +34,15 @@
         <button id="deleteRowBtn" class="control-button button-spacing">Delete Row</button>
         <button id="addColumnBtn" class="control-button button-spacing">Add Column</button>
         <button id="deleteColumnBtn" class="control-button button-spacing">Delete Column</button>
-        <button id="exportButton" class="control-button button-spacing">Save</button>
+        <button id="hideRows" class="control-button button-spacing">Hide Rows</button>
+        <button id="saveButton" class="control-button button-spacing">Save</button>
+        <button id="exportButton" class="control-button button-spacing">Export to CSV</button>
     </div>
     <br>
     <div id="myGrid" class="ag-theme-alpine" style="height: 600px;"></div>
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
     <script src="static/script2.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </body>
 </html>

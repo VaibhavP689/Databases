@@ -16,15 +16,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const gridApi = new agGrid.createGrid(gridDiv, gridOptions);
     let oldLength = 0;
 
+    // Date formatter function
+    function dateFormatter(params) {
+        if (params.value) {
+            return moment(params.value).format('MM/DD/YYYY');
+        } else {
+            return '';
+        }
+    }
+
     // Fetch the JSON file
     fetch('static/data3.json')
         .then(response => response.json())
         .then(data => {
             // Set column definitions from the keys of the first object
-            const columns = Object.keys(data[0]).map(key => ({
-                headerName: key,
-                field: key,
-            }));
+            const columns = Object.keys(data[0]).map(key => {
+                const isString = typeof data[0][key] === 'string';
+                if(isString) {
+                    const isDate = data[0][key].includes("00:00:00");
+                    return {
+                        headerName: key,
+                        field: key,
+                        valueFormatter: isDate ? dateFormatter : undefined
+                    };
+                }
+                else {
+                    return {
+                        headerName: key,
+                        field: key
+                    };
+                }
+            });
             gridApi.setGridOption('columnDefs', columns);
             gridApi.setGridOption('editType', 'fullRow');
             gridApi.setGridOption('rowData', data);
@@ -59,12 +81,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener to the button
     document.getElementById('exportButton').addEventListener('click', () => {
+        const params = {
+            fileName: 'EmployeeDetails.csv'
+        };
+        gridApi.exportDataAsCsv(params);
+    });
+
+    // Add event listener to the button
+    document.getElementById('saveButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi, oldLength);
         setTimeout(() => {
             this.location.reload();
             console.log('Timeout completed!');
           }, 200);
     });
+
+    document.getElementById('hideRows').addEventListener('click', () => {
+        hideSelectedRows(gridApi);
+    });
+    
 });
 
 function exportGridDataToJson(gridApi, oldLength) {
@@ -216,6 +251,14 @@ function deleteColumn(gridApi) {
                 }
             }).catch((err) => console.error(err));
 }
+
+function hideSelectedRows(gridApi) {
+    const selectedNodes = gridApi.getSelectedNodes();
+    const selectedData = selectedNodes.map(node => node.data);
+
+    gridApi.applyTransaction({ remove: selectedData });
+}
+
 
 const checkIfKeyExist = (objectName, keyName) => {
     let keyExist = Object.keys(objectName).some(key => key === keyName);
