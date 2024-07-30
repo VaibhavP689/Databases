@@ -93,6 +93,7 @@ def postME3():
     data = request.get_json()
     final = json.dumps(data, indent=2)
     utility.createDatabaseTableFromJSON(final, "mydb.db", "Sheet3")
+    utility.createJSONFileFromDB("Sheet3", "data3.json", "mydb.db")
     return final
 
 @app.route("/receiver4", methods=["POST"])

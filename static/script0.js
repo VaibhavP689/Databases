@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     document.getElementById('loadButton').addEventListener('click', loadCharts);
 
+    // Fetches the appropriate column names from the given sheet
     const fetchData = (sheet) => {
         const sheetMap = {
             'UPS Client Info': 'data1.json',
@@ -206,6 +207,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
     };
 
+    // This function loads the columns for the selected sheet from the sheets dropdown
+    // Column names are dynamically loaded from variable colors
     const updateVariableSelect = (sheet) => {
         const variableSelect = document.getElementById('dropdown-content');
         variableSelect.innerHTML = '';
@@ -218,6 +221,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     };
 
+    // Takes input from select sheets dropdown 
     document.getElementById('sheetSelect').addEventListener('change', (event) => {
         const selectedSheet = event.target.value;
         fetchData(selectedSheet);
