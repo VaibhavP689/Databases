@@ -87,6 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
         gridApi.exportDataAsCsv(params);
     });
 
+    document.getElementById('hideRows').addEventListener('click', () => {
+        hideSelectedRows(gridApi);
+    });
+    
+
     // Add event listener to the button
     document.getElementById('saveButton').addEventListener('click', () => {
         exportGridDataToJson(gridApi, oldLength);
@@ -245,6 +250,13 @@ function deleteColumn(gridApi) {
                     alert("something is wrong")
                 }
             }).catch((err) => console.error(err));
+}
+
+function hideSelectedRows(gridApi) {
+    const selectedNodes = gridApi.getSelectedNodes();
+    const selectedData = selectedNodes.map(node => node.data);
+
+    gridApi.applyTransaction({ remove: selectedData });
 }
 
 const checkIfKeyExist = (objectName, keyName) => {

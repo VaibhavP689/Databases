@@ -20,7 +20,8 @@
         "Billing Start Date": "2023-03-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 0
     },
     {
         "Key IDs": 2,
@@ -43,7 +44,8 @@
         "Billing Start Date": "2023-03-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 1
     },
     {
         "Key IDs": 3,
@@ -66,7 +68,8 @@
         "Billing Start Date": "2023-03-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 2
     },
     {
         "Key IDs": 4,
@@ -89,7 +92,8 @@
         "Billing Start Date": "2023-03-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 3
     },
     {
         "Key IDs": 5,
@@ -112,7 +116,8 @@
         "Billing Start Date": "2023-03-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 4
     },
     {
         "Key IDs": 6,
@@ -135,7 +140,8 @@
         "Billing Start Date": "2023-04-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 5
     },
     {
         "Key IDs": 7,
@@ -158,7 +164,8 @@
         "Billing Start Date": "2023-04-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 6
     },
     {
         "Key IDs": 8,
@@ -181,7 +188,8 @@
         "Billing Start Date": "2023-04-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 7
     },
     {
         "Key IDs": 9,
@@ -204,7 +212,8 @@
         "Billing Start Date": "2023-04-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 8
     },
     {
         "Key IDs": 10,
@@ -227,7 +236,8 @@
         "Billing Start Date": "2023-04-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 9
     },
     {
         "Key IDs": 11,
@@ -250,7 +260,8 @@
         "Billing Start Date": "2023-05-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 10
     },
     {
         "Key IDs": 12,
@@ -273,7 +284,8 @@
         "Billing Start Date": "2023-05-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 11
     },
     {
         "Key IDs": 13,
@@ -296,7 +308,8 @@
         "Billing Start Date": "2023-05-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 12
     },
     {
         "Key IDs": 14,
@@ -319,7 +332,8 @@
         "Billing Start Date": "2023-05-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 13
     },
     {
         "Key IDs": 15,
@@ -342,7 +356,8 @@
         "Billing Start Date": "2023-05-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 14
     },
     {
         "Key IDs": 16,
@@ -365,7 +380,8 @@
         "Billing Start Date": "2023-06-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 15
     },
     {
         "Key IDs": 17,
@@ -388,7 +404,8 @@
         "Billing Start Date": "2023-06-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 16
     },
     {
         "Key IDs": 18,
@@ -411,7 +428,8 @@
         "Billing Start Date": "2023-06-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 17
     },
     {
         "Key IDs": 19,
@@ -434,7 +452,8 @@
         "Billing Start Date": "2023-06-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 18
     },
     {
         "Key IDs": 20,
@@ -457,7 +476,8 @@
         "Billing Start Date": "2023-06-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 19
     },
     {
         "Key IDs": 21,
@@ -480,7 +500,8 @@
         "Billing Start Date": "2023-07-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 20
     },
     {
         "Key IDs": 22,
@@ -503,7 +524,8 @@
         "Billing Start Date": "2023-07-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 21
     },
     {
         "Key IDs": 23,
@@ -526,7 +548,8 @@
         "Billing Start Date": "2023-07-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 22
     },
     {
         "Key IDs": 24,
@@ -549,7 +572,8 @@
         "Billing Start Date": "2023-07-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 23
     },
     {
         "Key IDs": 25,
@@ -572,7 +596,8 @@
         "Billing Start Date": "2023-07-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 24
     },
     {
         "Key IDs": 26,
@@ -595,7 +620,8 @@
         "Billing Start Date": "2023-08-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 25
     },
     {
         "Key IDs": 27,
@@ -618,7 +644,8 @@
         "Billing Start Date": "2023-08-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 26
     },
     {
         "Key IDs": 28,
@@ -641,7 +668,8 @@
         "Billing Start Date": "2023-08-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 27
     },
     {
         "Key IDs": 29,
@@ -664,7 +692,8 @@
         "Billing Start Date": "2023-08-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 28
     },
     {
         "Key IDs": 30,
@@ -687,7 +716,8 @@
         "Billing Start Date": "2023-08-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 29
     },
     {
         "Key IDs": 31,
@@ -710,7 +740,8 @@
         "Billing Start Date": "2023-09-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 30
     },
     {
         "Key IDs": 32,
@@ -733,7 +764,8 @@
         "Billing Start Date": "2023-09-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 31
     },
     {
         "Key IDs": 33,
@@ -756,7 +788,8 @@
         "Billing Start Date": "2023-09-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 32
     },
     {
         "Key IDs": 34,
@@ -779,7 +812,8 @@
         "Billing Start Date": "2023-09-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 33
     },
     {
         "Key IDs": 35,
@@ -802,7 +836,8 @@
         "Billing Start Date": "2023-09-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 34
     },
     {
         "Key IDs": 36,
@@ -825,7 +860,8 @@
         "Billing Start Date": "2023-10-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 35
     },
     {
         "Key IDs": 37,
@@ -848,7 +884,8 @@
         "Billing Start Date": "2023-10-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 36
     },
     {
         "Key IDs": 38,
@@ -871,7 +908,8 @@
         "Billing Start Date": "2023-10-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 37
     },
     {
         "Key IDs": 39,
@@ -894,7 +932,8 @@
         "Billing Start Date": "2023-10-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 38
     },
     {
         "Key IDs": 40,
@@ -917,7 +956,8 @@
         "Billing Start Date": "2023-10-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 39
     },
     {
         "Key IDs": 41,
@@ -940,7 +980,8 @@
         "Billing Start Date": "2023-11-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 40
     },
     {
         "Key IDs": 42,
@@ -963,7 +1004,8 @@
         "Billing Start Date": "2023-11-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 41
     },
     {
         "Key IDs": 43,
@@ -986,7 +1028,8 @@
         "Billing Start Date": "2023-11-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 42
     },
     {
         "Key IDs": 44,
@@ -1009,7 +1052,8 @@
         "Billing Start Date": "2023-11-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 43
     },
     {
         "Key IDs": 45,
@@ -1032,7 +1076,8 @@
         "Billing Start Date": "2023-11-25 00:00:00",
         "Key Updates": "On hold",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 44
     },
     {
         "Key IDs": 46,
@@ -1055,7 +1100,8 @@
         "Billing Start Date": "2023-12-05 00:00:00",
         "Key Updates": "Completed on time",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 45
     },
     {
         "Key IDs": 47,
@@ -1078,7 +1124,8 @@
         "Billing Start Date": "2023-12-10 00:00:00",
         "Key Updates": "Minor delays",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 46
     },
     {
         "Key IDs": 48,
@@ -1101,7 +1148,8 @@
         "Billing Start Date": "2023-12-15 00:00:00",
         "Key Updates": "On track",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 47
     },
     {
         "Key IDs": 49,
@@ -1124,7 +1172,8 @@
         "Billing Start Date": "2023-12-20 00:00:00",
         "Key Updates": "Completed early",
         "Remarks": "-",
-        "Interns": 0
+        "Interns": 0,
+        "originalIndex": 48
     },
     {
         "Key IDs": 50,
@@ -1144,9 +1193,10 @@
         "Assisted Perform": "2023-11-20 00:00:00",
         "Independent Perform": "2023-12-05 00:00:00",
         "Steady State": "2023-12-20 00:00:00",
-        "Billing Start Date": null,
+        "Billing Start Date": "12/25/2023",
         "Key Updates": null,
-        "Remarks": null,
-        "Interns": 0
+        "Remarks": "-",
+        "Interns": 0,
+        "originalIndex": 49
     }
 ]
