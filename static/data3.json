@@ -53,7 +53,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-01 00:00:00"
     },
     {
@@ -110,7 +109,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-02 00:00:00"
     },
     {
@@ -167,7 +165,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-03 00:00:00"
     },
     {
@@ -224,7 +221,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-04 00:00:00"
     },
     {
@@ -281,7 +277,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-05 00:00:00"
     },
     {
@@ -338,7 +333,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-06 00:00:00"
     },
     {
@@ -395,7 +389,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-07 00:00:00"
     },
     {
@@ -452,7 +445,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-08 00:00:00"
     },
     {
@@ -509,7 +501,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-09 00:00:00"
     },
     {
@@ -566,7 +557,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-10 00:00:00"
     },
     {
@@ -623,7 +613,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-11 00:00:00"
     },
     {
@@ -680,7 +669,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-12 00:00:00"
     },
     {
@@ -737,7 +725,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Approved",
-        "Remarks": "Yes",
         "Project": "2024-01-13 00:00:00"
     },
     {
@@ -794,7 +781,6 @@
         "Citrix approval-IBU Head.1": "No",
         "UPS Laptop (Y/N)": "Approved",
         "KT Start Date": "Pending",
-        "Remarks": "No",
         "Project": "2024-01-14 00:00:00"
     },
     {
@@ -851,7 +837,6 @@
         "Citrix approval-IBU Head.1": "Yes",
         "UPS Laptop (Y/N)": null,
         "KT Start Date": null,
-        "Remarks": null,
         "Project": null
     }
 ]

@@ -20,7 +20,8 @@
         "Billing Start Date",
         "Key Updates",
         "Remarks",
-        "Interns"
+        "Interns",
+        "Banana Chips"
     ],
     "Sheet2": [
         "First Name",
@@ -108,7 +109,6 @@
         "Citrix approval-IBU Head.1",
         "UPS Laptop (Y/N)",
         "KT Start Date",
-        "Remarks",
         "Project"
     ],
     "Sheet4": [

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const gridApi = new agGrid.createGrid(gridDiv, gridOptions);
     let oldLength = 0;
     let hiddenRows = []; // Array to store hidden rows
-    let allRowsData = []; // Array to store all rows data with original index
+    // let allRowsData = []; // Array to store all rows data with original index
 
     // Date formatter function
     function dateFormatter(params) {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             gridApi.setGridOption('editType', 'fullRow');
             gridApi.setGridOption('rowData', data.map((row, index) => ({...row, originalIndex: index})));
             oldLength = data.length;
-            allRowsData = data.map((row, index) => ({...row, originalIndex: index}));
+            // allRowsData = data.map((row, index) => ({...row, originalIndex: index}));
         })
         .catch(error => console.error('Error loading JSON:', error));
 
@@ -63,9 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add event listener for add row button
     document.getElementById('addRowBtn').addEventListener('click', function() {
-        const newRow = { originalIndex: allRowsData.length };
-        allRowsData.push(newRow);
-        gridApi.applyTransaction({ add: [newRow] });
+        // const newRow = { originalIndex: allRowsData.length };
+        // allRowsData.push(newRow);
+        // gridApi.applyTransaction({ add: [newRow] });
+        gridApi.applyTransaction({ add: [{}] });
     });
 
     // Add event listener to the button
@@ -188,23 +189,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const rowData = [];
         gridApi.forEachNode(node => rowData.push(node.data));
         const filteredRowData = rowData.filter(obj => !isAllValuesNull(obj));
+       // console.log(filteredRowData);
+      if (isItInt === "String" || isItInt === "string") {
+           for (let dict of filteredRowData) {
+               // Add the new column with an empty string value
+               dict[columnName] = null;
+           }
+       }
+       else if (isItInt === "Number" || isItInt === "number") {
+           for (let dict of filteredRowData) {
+               // Add the new column with a value of 0
+               dict[columnName] = 0;
+           }
+       }
+       else {
+           alert("Invalid Data Type. Please use either String or Number.");
+       }
+        console.log("Printing after adding columns");
         console.log(filteredRowData);
-        if (isItInt === "String" || isItInt === "string") {
-            for (let dict of filteredRowData) {
-                // Add the new column with an empty string value
-                dict[columnName] = null;
-            }
-        }
-        else if (isItInt === "Number" || isItInt === "number") {
-            for (let dict of filteredRowData) {
-                // Add the new column with a value of 0
-                dict[columnName] = 0;
-            }
-        }
-        else {
-            alert("Invalid Data Type. Please use either String or Number.");
-        }
-        console.log(filteredRowData);
+
+        gridApi.refreshCells({ force: true });
 
         alert("New Column Saved. Screen will now refresh.");
 
@@ -234,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function deleteColumn(gridApi) {
         const columnName = prompt("What column do you want to delete?");
-
+   
         const rowData = [];
         gridApi.forEachNode(node => rowData.push(node.data));
         const filteredRowData = rowData.filter(obj => !isAllValuesNull(obj));
@@ -248,28 +252,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         alert("Column Deleted. Screen will now refresh.");
 
-        setTimeout(() => {
-            this.location.reload();
-            console.log('Timeout completed!');
-        }, 200);
-        const json = JSON.stringify(filteredRowData, null, 2);
-        console.log(json);
+        // setTimeout(() => {
+        //     this.location.reload();
+        //     console.log('Timeout completed!');
+        // }, 200);
+        // const json = JSON.stringify(filteredRowData, null, 2);
+        // console.log(json);
 
-        fetch("/receiver1", 
-            {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-            body:json})
-            .then(function(response){
-                    if(response.ok){
-                        console.log("hello")
-                    }else{
-                        alert("something is wrong")
-                    }
-                }).catch((err) => console.error(err));
+        // fetch("/receiver1", 
+        //     {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-type': 'application/json',
+        //             'Accept': 'application/json'
+        //         },
+        //     body:json})
+        //     .then(function(response){
+        //             if(response.ok){
+        //                 console.log("hello")
+        //             }else{
+        //                 alert("something is wrong")
+        //             }
+        //         }).catch((err) => console.error(err));
     }
 
     const checkIfKeyExist = (objectName, keyName) => {
